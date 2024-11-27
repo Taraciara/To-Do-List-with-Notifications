@@ -1,0 +1,17 @@
+# todo_list.py
+
+import schedule
+import time
+
+tasks = []
+
+def add_task(task, reminder_time=None):
+    tasks.append(task)
+    if reminder_time:
+        schedule.every().day.at(reminder_time).do(lambda: print(f"Reminder: {task}"))
+
+# Sample usage
+add_task("Finish Python project", "14:00")
+while True:
+    schedule.run_pending()
+    time.sleep(1)
